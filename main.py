@@ -63,13 +63,13 @@ def upload_file():
         if file.filename == "":
             return "No file selected", 400
 
-        file_path = os.path.join(app.config["UPLOAD_FOLDER"], file.filename)        # Save the uploaded file to the uploads folder
+        file_path = os.path.join(app.config["upload_folder"], file.filename)        # Save the uploaded file to the uploads folder
         file.save(file_path)
 
         try:
             extracted_data = process_pdf(file_path)                    # Process the uploaded PDF and extract data
 
-            json_file_path = os.path.join(app.config["DOWNLOAD_FOLDER"], "product_data.json")  # Save the extracted data to a JSON file
+            json_file_path = os.path.join(app.config["download_folder"], "product_data.json")  # Save the extracted data to a JSON file
             with open(json_file_path, "w") as json_file:
                 json.dump(extracted_data, json_file, indent=4)
            
