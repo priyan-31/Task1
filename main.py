@@ -20,6 +20,7 @@ app.config["download_folder"] = download_folder
 llm = ChatOpenAI(api_key=" ")                                 # here we pass our api key -5
 
 class product(BaseModel):                                    # this is a functional class used to define data models --- pydantic model
+    product_code: str = Field(description="product code")
     product_name: str = Field(description="Product name")    # basemodel & field?
     price: str = Field(description="Price")                  # used this to let know langchain what fields we need.
     category: str = Field(description="Category")
